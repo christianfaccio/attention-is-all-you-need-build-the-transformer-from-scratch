@@ -25,8 +25,14 @@ def build_id_to_token_vocab(token_to_id):
     # return the inverse mapping
     return {id:token for token,id in token_to_id.items()}
 
-# Step 3 - encode_sentence_to_ids (not yet solved)
-# TODO: implement
+# Step 3 - encode_sentence_to_ids
+def encode_sentence_to_ids(sentence, token_to_id, unk_token='<unk>'):
+    out = []
+    tokens = sentence.split()
+    for token in tokens:
+        id = token_to_id[token] if token in token_to_id else token_to_id[unk_token]
+        out.append(id)
+    return out
 
 # Step 4 - decode_ids_to_tokens (not yet solved)
 # TODO: implement
