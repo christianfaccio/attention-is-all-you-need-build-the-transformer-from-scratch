@@ -110,8 +110,14 @@ def build_sinusoidal_positional_encoding(max_len, d_model):
     cos_fill = fill_odd_indices_with_cos(out, pos_idx, div_term)
     return torch.FloatTensor(out)
 
-# Step 13 - add_positional_encoding_to_embeddings (not yet solved)
-# TODO: implement
+# Step 13 - add_positional_encoding_to_embeddings
+import torch
+
+def add_positional_encoding_to_embeddings(embedded_batch, positional_encoding):
+    # NOTE: embedded batch has shape (B,L,d_model)
+    # while positional_encoding matrix has shape (max_len,d_model)
+    B,L,d_model = embedded_batch.shape
+    return embedded_batch + positional_encoding[:L,:]
 
 # Step 14 - build_padding_mask (not yet solved)
 # TODO: implement
